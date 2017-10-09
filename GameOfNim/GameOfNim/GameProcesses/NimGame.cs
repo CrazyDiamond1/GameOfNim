@@ -9,17 +9,10 @@ namespace GameOfNim.GameProcesses
 {
     class NimGame
     {
-<<<<<<< HEAD
         public Player player1;
         public Player player2;
         public Board gameBoard;
         int turnCounter = 0;
-=======
-        Player player1;
-        Player player2;
-        public Board gameBoard;
-        int turnCounter;
->>>>>>> 2739afb455a9bd09d31fa1ae6f4eea1839e21f0c
         int difficulty;
         bool isPVP;
         Random randold = new Random();
