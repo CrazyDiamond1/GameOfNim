@@ -57,6 +57,10 @@
     <Compile Include="GameWindow.xaml.cs">
       <DependentUpon>GameWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="GameProcesses\NimGame.cs" />
+    <Compile Include="Models\Board.cs" />
+    <Compile Include="GameProcesses\GameOfNimRules.cs" />
+    <Compile Include="Models\Player.cs" />
     <Compile Include="SetupWindow.xaml.cs">
       <DependentUpon>SetupWindow.xaml</DependentUpon>
     </Compile>

@@ -29,23 +29,28 @@ namespace GameOfNim
         }
 
         public void PVP_Checked()
-        { 
+        {
+            isPVP = true;
         }
         public void PVC_Checked()
         {
+            isPVP = false;
         }
         public void Easy_Checked()
         {
+            difficulty = 1;
         }
         public void Medium_Checked()
         {
+            difficulty = 2;
         }
         public void Hard_Checked()
         {
+            difficulty = 3;
         }
 
         /// <summary>
-        /// When this method is called a window containing the game will present itself
+        /// When this method is called, a window containing the game will present itself
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
