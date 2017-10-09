@@ -24,6 +24,8 @@ namespace GameOfNim
         public SetupWindow()
         {
             InitializeComponent();
+            PVP.IsChecked = true;
+            Easy.IsChecked = true;
         }
 
         public void PVP_Checked()
@@ -42,7 +44,7 @@ namespace GameOfNim
         {
             difficulty = 2;
         }
-        public void _Checked()
+        public void Hard_Checked()
         {
             difficulty = 3;
         }
@@ -54,7 +56,9 @@ namespace GameOfNim
         /// <param name="e"></param>
         private void PlayButton_Click(object sender, RoutedEventArgs e)
         {
-
+            GameWindow game = new GameWindow(1, true);
+            this.Close();
+            game.ShowDialog();
         }
     }
 }
