@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GameOfNim.GameProcesses;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +9,7 @@ namespace GameOfNim
 {
     public class GameOfNimRules
     {
-        //NimGame nim = new NimGame(1, true);
+        NimGame nim = new NimGame(1, true);
 
         /// <summary>
         /// When this method is called, it will validate the player's move
@@ -16,7 +17,7 @@ namespace GameOfNim
         /// <returns></returns>
         public bool IsMoveLegal()
         {
-            //if (nim.CheckHeaps() > 0)
+            //if (NimGame.CheckHeaps() > 0)
             //{
             //    return true;
             //}

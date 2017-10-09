@@ -9,8 +9,8 @@ namespace GameOfNim.GameProcesses
 {
     class NimGame
     {
-        //Player player1;
-        //Player player2;
+        Player player1;
+        Player player2;
         Board gameBoard;
         int turnCounter;
         int difficulty;
@@ -21,17 +21,34 @@ namespace GameOfNim.GameProcesses
 
             if (!isPVP)
             {
-                //player1 = new Player(true);
-                //Player1.InitializePlayer();
-                //player2 = new Player(false);
+                player1 = new Player(true);
+                player1.InitializePlayer();
+                player2 = new Player(false);
             }
             else if (isPVP)
             {
-                //player1 = new Player(true);
-                //Player1.InitializePlayer();
-                //player2 = new Player(false);
-                //Player2.InitializePlayer();
+                player1 = new Player(true);
+                player1.InitializePlayer();
+                player2 = new Player(false);
+                player2.InitializePlayer();
             }
+        }
+
+        public void PlayerTurn()
+        {
+
+        }
+        public void PlayerMove()
+        {
+
+        }
+        public int CheckObjectTotal()
+        {
+            return 1;
+        }
+        public int CheckHeap()
+        {
+            return 1;
         }
     }
 }

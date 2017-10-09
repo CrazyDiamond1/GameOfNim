@@ -56,8 +56,8 @@
     </ApplicationDefinition>
     <Compile Include="GameProcesses\NimGame.cs" />
     <Compile Include="Models\Board.cs" />
-    <Compile Include="GameOfNimRules.cs" />
-    <Compile Include="Player.cs" />
+    <Compile Include="GameProcesses\GameOfNimRules.cs" />
+    <Compile Include="Models\Player.cs" />
     <Compile Include="SetupWindow.xaml.cs">
       <DependentUpon>SetupWindow.xaml</DependentUpon>
     </Compile>

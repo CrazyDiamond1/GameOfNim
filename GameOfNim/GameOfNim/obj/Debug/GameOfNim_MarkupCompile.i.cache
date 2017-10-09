@@ -4,30 +4,15 @@
 winexe
 C#
 .cs
-<<<<<<< HEAD
-C:\Users\MGThunder\Documents\GitHub\GameOfNim\GameOfNim\GameOfNim\obj\Debug\
-=======
 C:\Users\Noah Tanner\Desktop\Neumont\Principles of Software Engineering\Assignments\GameOfNimRepo\GameOfNim\GameOfNim\GameOfNim\obj\Debug\
->>>>>>> 5d1774a4d41f599e1ab42a0a76805a0392870778
 GameOfNim
 none
 false
 DEBUG;TRACE
-<<<<<<< HEAD
-C:\Users\MGThunder\Documents\GitHub\GameOfNim\GameOfNim\GameOfNim\App.xaml
-32067804016
-
-13-2083792969
-=======
 C:\Users\Noah Tanner\Desktop\Neumont\Principles of Software Engineering\Assignments\GameOfNimRepo\GameOfNim\GameOfNim\GameOfNim\App.xaml
 32067804016
 
-<<<<<<< HEAD
-15-1763416841
-=======
-13595316560
->>>>>>> 5d1774a4d41f599e1ab42a0a76805a0392870778
->>>>>>> 275dca151e8f6cc0f85c141a80420e4041cc2aea
+151520304671
 13-1454942768
 InstructionsWindow.xaml;MainWindow.xaml;SetupWindow.xaml;
 
