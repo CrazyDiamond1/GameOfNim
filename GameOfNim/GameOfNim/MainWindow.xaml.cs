@@ -33,6 +33,7 @@ namespace GameOfNim
         private void PlayButton_Click(object sender, RoutedEventArgs e)
         {
             SetupWindow setupWindow = new SetupWindow();
+            this.Close();
             setupWindow.ShowDialog();
         }
 
