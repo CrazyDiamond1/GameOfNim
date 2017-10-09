@@ -25,6 +25,13 @@ namespace GameOfNim.GameProcesses
                 //Player1.InitializePlayer();
                 //player2 = new Player(false);
             }
+            else if (isPVP)
+            {
+                //player1 = new Player(true);
+                //Player1.InitializePlayer();
+                //player2 = new Player(false);
+                //Player2.InitializePlayer();
+            }
         }
     }
 }
