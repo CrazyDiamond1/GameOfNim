@@ -8,7 +8,7 @@ namespace GameOfNim
 {
     public class GameOfNimRules
     {
-        //NimGame nim = new NimGame(1, true);
+        NimGame nim = new NimGame(1, true);
 
         /// <summary>
         /// When this method is called, it will validate the player's move
@@ -16,10 +16,10 @@ namespace GameOfNim
         /// <returns></returns>
         public bool IsMoveLegal()
         {
-            //if (nim.CheckHeaps() > 0)
-            //{
-            //    return true;
-            //}
+            if (nim.CheckHeaps() > 0)
+            {
+                return true;
+            }
             return false;
         }
 
