@@ -7,15 +7,17 @@ using System.Threading.Tasks;
 
 namespace GameOfNim.GameProcesses
 {
-    public class GameOfNimRules
+    public static class GameOfNimRules
     {
-        NimGame nim = new NimGame(1, true);
+        static NimGame nim = new NimGame(1, true);
 
         /// <summary>
         /// When this method is called, it will validate the player's move
         /// </summary>
+        /// <param name="heapNumber">An int representing which heap the object(s) is/are being removed from</param>
+        /// <param name="objectsToBeRemoved">The amount of objects being removed from the chosen heap</param>
         /// <returns></returns>
-        public bool IsMoveLegal()
+        public static bool IsMoveLegal(int heapNumber, int objectsToBeRemoved)
         {
             //if (NimGame.CheckHeaps() > 0)
             //{
@@ -29,7 +31,7 @@ namespace GameOfNim.GameProcesses
         /// </summary>
         /// <param name="objectsTotal"></param>
         /// <returns></returns>
-        public bool PlayerLoses(int objectsTotal)
+        public static bool PlayerLoses(int objectsTotal)
         {
             if (objectsTotal < 1)
             {

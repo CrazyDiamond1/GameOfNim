@@ -4,15 +4,22 @@
 winexe
 C#
 .cs
-C:\Users\Noah Tanner\Desktop\Neumont\Principles of Software Engineering\Assignments\GameOfNimRepo\GameOfNim\GameOfNim\GameOfNim\obj\Debug\
+C:\Neumont Work\CSC130 - Principles of Software Engineering\NIM - Pure Waterfall\GameOfNim\GameOfNim\GameOfNim\obj\Debug\
 GameOfNim
 none
 false
 DEBUG;TRACE
+<<<<<<< HEAD
 C:\Users\Noah Tanner\Desktop\Neumont\Principles of Software Engineering\Assignments\GameOfNimRepo\GameOfNim\GameOfNim\GameOfNim\App.xaml
 4801498635
 
 16-1689523778
+=======
+C:\Neumont Work\CSC130 - Principles of Software Engineering\NIM - Pure Waterfall\GameOfNim\GameOfNim\GameOfNim\App.xaml
+4801498635
+
+16-1106988161
+>>>>>>> 2739afb455a9bd09d31fa1ae6f4eea1839e21f0c
 13-1454942768
 GameWindow.xaml;InstructionsWindow.xaml;MainWindow.xaml;SetupWindow.xaml;
 

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using GameOfNim.GameProcesses;
+using GameOfNim.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,16 +21,19 @@ namespace GameOfNim
     /// </summary>
     public partial class GameWindow : Window
     {
+        //All these text boxes are for values for the remove button event to read
         TextBox removeBoxZero = new TextBox();
         TextBox removeBoxOne = new TextBox();
         TextBox removeBoxTwo = new TextBox();
         TextBox removeBoxThree = new TextBox();
-        //private NimGame currentGame;
+        private NimGame currentGame;
         public GameWindow(int difficulty, bool isPVP)
         {
             InitializeComponent();
+            //This if statement holds all difficulty cases
             if(difficulty == 1)
             {
+                //Dynamically create the gui for easy mode
                 for(int i = 0; i < 2; i++)
                 {
                     StackPanel stack = new StackPanel();
@@ -53,6 +58,7 @@ namespace GameOfNim
             else if (difficulty == 2)
             {
                 GameBoard.ColumnDefinitions.Add(new ColumnDefinition());
+                //Dynamically create the gui for medium mode
                 for (int i = 0; i < 3; i++)
                 {
                     StackPanel stack = new StackPanel();
@@ -83,6 +89,7 @@ namespace GameOfNim
             {
                 GameBoard.ColumnDefinitions.Add(new ColumnDefinition());
                 GameBoard.ColumnDefinitions.Add(new ColumnDefinition());
+                //Dynamically create the gui for hard mode 
                 for (int i = 0; i < 4; i++)
                 {
                     StackPanel stack = new StackPanel();
@@ -113,32 +120,105 @@ namespace GameOfNim
                     Grid.SetRow(stack, 1);
                     Grid.SetColumn(stack, i);
                 }
+                for(int i = 0; i < GameBoard.ColumnDefinitions.Count; i++)
+                {
+
+                }
+            }
+        }
+        /// <summary>
+        /// Removes objects from the first heap
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void RemoveButtonZero_Click(object sender, RoutedEventArgs e)
+        {
+            int objectAmountRemoved;
+            int.TryParse(removeBoxZero.Text, out objectAmountRemoved);
+            if(GameOfNimRules.IsMoveLegal(0, objectAmountRemoved))
+            {
+                currentGame.gameBoard.heaps[0] -= objectAmountRemoved;
+                currentGame.PlayerTurn();
+            }
+            else
+            {
+                MessageBox.Show("Invalid move. Try again.", "E R R O R");
+            }
+        }
+        /// <summary>
+        /// Removes objects from the second heap
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void RemoveButtonOne_Click(object sender, RoutedEventArgs e)
+        {
+            int objectAmountRemoved;
+            int.TryParse(removeBoxOne.Text, out objectAmountRemoved);
+            if (GameOfNimRules.IsMoveLegal(1, objectAmountRemoved))
+            {
+                currentGame.gameBoard.heaps[1] -= objectAmountRemoved;
+                currentGame.PlayerTurn();
+            }
+            else
+            {
+                MessageBox.Show("Invalid move. Try again.", "E R R O R");
+            }
+        }
+        /// <summary>
+        /// Removes objects from the third heap
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void RemoveButtonTwo_Click(object sender, RoutedEventArgs e)
+        {
+            int objectAmountRemoved;
+            int.TryParse(removeBoxTwo.Text, out objectAmountRemoved);
+            if (GameOfNimRules.IsMoveLegal(2, objectAmountRemoved))
+            {
+                currentGame.gameBoard.heaps[2] -= objectAmountRemoved;
+                currentGame.PlayerTurn();
+            }
+            else
+            {
+                MessageBox.Show("Invalid move. Try again.", "E R R O R");
+            }
+        }
+        /// <summary>
+        /// Removes objects from the fourth heap
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void RemoveButtonThree_Click(object sender, RoutedEventArgs e)
+        {
+            int objectAmountRemoved;
+            int.TryParse(removeBoxThree.Text, out objectAmountRemoved);
+            if (GameOfNimRules.IsMoveLegal(3, objectAmountRemoved))
+            {
+                currentGame.gameBoard.heaps[3] -= objectAmountRemoved;
+                currentGame.PlayerTurn();
+            }
+            else
+            {
+                MessageBox.Show("Invalid move. Try again.", "E R R O R");
             }
         }
 
-        private void RemoveButtonZero_Click(object sender, RoutedEventArgs e)
-        {
-            throw new NotImplementedException();
-        }
-        private void RemoveButtonOne_Click(object sender, RoutedEventArgs e)
-        {
-            throw new NotImplementedException();
-        }
-        private void RemoveButtonTwo_Click(object sender, RoutedEventArgs e)
-        {
-            throw new NotImplementedException();
-        }
-        private void RemoveButtonThree_Click(object sender, RoutedEventArgs e)
-        {
-            throw new NotImplementedException();
-        }
-
+        /// <summary>
+        /// Makes the instructions window popup
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Rules_Click(object sender, RoutedEventArgs e)
         {
             Instructions instructionsWindow = new Instructions();
             instructionsWindow.ShowDialog();
         }
 
+        /// <summary>
+        /// Exits out of the entire game
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Exit_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
