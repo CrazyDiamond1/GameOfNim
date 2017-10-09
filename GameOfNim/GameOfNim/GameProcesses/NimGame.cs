@@ -11,7 +11,7 @@ namespace GameOfNim.GameProcesses
     {
         Player player1;
         Player player2;
-        Board gameBoard;
+        public Board gameBoard;
         int turnCounter;
         int difficulty;
         bool isPVP;
