@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GameOfNim
+namespace GameOfNim.GameProcesses
 {
     public class GameOfNimRules
     {
@@ -31,7 +31,7 @@ namespace GameOfNim
         /// <returns></returns>
         public bool PlayerLoses(int objectsTotal)
         {
-            if (objectsTotal <= 1)
+            if (objectsTotal < 1)
             {
                 return true;
             }

@@ -17,3 +17,5 @@ C:\Users\Noah Tanner\Desktop\Neumont\Principles of Software Engineering\Assignme
 C:\Users\Noah Tanner\Desktop\Neumont\Principles of Software Engineering\Assignments\GameOfNimRepo\GameOfNim\GameOfNim\GameOfNim\obj\Debug\GameOfNim.csproj.CoreCompileInputs.cache
 C:\Users\Noah Tanner\Desktop\Neumont\Principles of Software Engineering\Assignments\GameOfNimRepo\GameOfNim\GameOfNim\GameOfNim\obj\Debug\GameOfNim.exe
 C:\Users\Noah Tanner\Desktop\Neumont\Principles of Software Engineering\Assignments\GameOfNimRepo\GameOfNim\GameOfNim\GameOfNim\obj\Debug\GameOfNim.pdb
+C:\Users\Noah Tanner\Desktop\Neumont\Principles of Software Engineering\Assignments\GameOfNimRepo\GameOfNim\GameOfNim\GameOfNim\obj\Debug\GameWindow.g.cs
+C:\Users\Noah Tanner\Desktop\Neumont\Principles of Software Engineering\Assignments\GameOfNimRepo\GameOfNim\GameOfNim\GameOfNim\obj\Debug\GameWindow.baml
