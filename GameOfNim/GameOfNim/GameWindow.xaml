@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GameOfNim"
         mc:Ignorable="d"    
-        Title="GameWindow" Height="500" Width="400" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="G A M E   O F   N I M" Height="500" Width="400" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <!--<Window.CommandBindings>
         <CommandBinding Command="Rules" CanExecute="CommandBinding_CanExecute"/>
     </Window.CommandBindings>-->

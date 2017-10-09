@@ -29,6 +29,7 @@ namespace GameOfNim
         private NimGame currentGame;
         public GameWindow(int difficulty, bool isPVP)
         {
+            currentGame = new NimGame(difficulty, isPVP);
             InitializeComponent();
             //This if statement holds all difficulty cases
             if(difficulty == 1)
@@ -119,11 +120,25 @@ namespace GameOfNim
                     GameBoard.Children.Add(stack);
                     Grid.SetRow(stack, 1);
                     Grid.SetColumn(stack, i);
-                }
-                for(int i = 0; i < GameBoard.ColumnDefinitions.Count; i++)
+                }                
+            }
+            for (int i = 0; i < GameBoard.ColumnDefinitions.Count; i++)
+            {
+                Grid tempGrid = new Grid();
+                for (int j = 0; j < 10; j++)
                 {
-
+                    tempGrid.RowDefinitions.Add(new RowDefinition());
                 }
+                for (int j = 0; j < currentGame.gameBoard.heaps[i]; j++)
+                {
+                    Label tempLabel = new Label();
+                    tempLabel.Background = Brushes.Firebrick;
+                    tempLabel.BorderThickness = new Thickness(2);
+                    tempGrid.Children.Add(tempLabel);
+                    Grid.SetRow(tempLabel, 9 - j);
+                }
+                GameBoard.Children.Add(tempGrid);
+                Grid.SetColumn(tempGrid, i);
             }
         }
         /// <summary>
