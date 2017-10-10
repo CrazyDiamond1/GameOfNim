@@ -9,11 +9,7 @@ namespace GameOfNim.GameProcesses
 {
     public static class GameOfNimRules
     {
-<<<<<<< HEAD:GameOfNim/GameOfNim/GameProcesses/GameOfNimRules.cs
-        NimGame nim = new NimGame(1, true);
-=======
         static NimGame nim = new NimGame(1, true);
->>>>>>> cf2561423cc8b4ae885f9f5201623dcbc2977dcb:GameOfNim/GameOfNim/GameProcesses/GameOfNimRules.cs
 
         /// <summary>
         /// When this method is called, it will validate the player's move
@@ -23,17 +19,10 @@ namespace GameOfNim.GameProcesses
         /// <returns></returns>
         public static bool IsMoveLegal(int heapNumber, int objectsToBeRemoved)
         {
-<<<<<<< HEAD:GameOfNim/GameOfNim/GameProcesses/GameOfNimRules.cs
-            if (nim.CheckHeaps() > 0)
+            if (nim.CheckHeap() > 0)
             {
                 return true;
             }
-=======
-            //if (NimGame.CheckHeaps() > 0)
-            //{
-            //    return true;
-            //}
->>>>>>> cf2561423cc8b4ae885f9f5201623dcbc2977dcb:GameOfNim/GameOfNim/GameProcesses/GameOfNimRules.cs
             return false;
         }
 
