@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace GameOfNim.GameProcesses
 {
-    class NimGame
+    public class NimGame
     {
         public Player player1;
         public Player player2;
@@ -42,7 +42,7 @@ namespace GameOfNim.GameProcesses
         /// </summary>
         public void PlayerTurn()
         {
-            turnCounter =+ 1;
+            this.turnCounter += 1;
             if(!isPVP)
             {
                 CompPlayerMove();
@@ -50,12 +50,24 @@ namespace GameOfNim.GameProcesses
         }
         public void CompPlayerMove()
         {
-            turnCounter =+ 1;
-            int numOfHeaps = gameBoard.numOfHeaps;
-            int heapToRemove = randold.Next(0,numOfHeaps);
-            int objectsInHeap = gameBoard.heaps[heapToRemove];
-            int objectsToRemove = randold.Next(1,objectsInHeap + 1);
-            gameBoard.heaps[heapToRemove] =- objectsToRemove;
+            bool valid = true;
+            do
+            {
+                int numOfHeaps = gameBoard.numOfHeaps;
+                int heapToRemove = randold.Next(0, numOfHeaps);
+                int objectsInHeap = gameBoard.heaps[heapToRemove];
+                int objectsToRemove = randold.Next(1, objectsInHeap + 1);
+                if (GameOfNimRules.IsMoveLegal(heapToRemove, objectsToRemove, gameBoard))
+                {
+                    gameBoard.heaps[heapToRemove] = -objectsToRemove;
+                    this.turnCounter += 1;
+                }
+                else
+                {
+                    valid = false;
+                }
+            }
+            while (!valid);
         }
         public int CheckObjectTotal()
         {

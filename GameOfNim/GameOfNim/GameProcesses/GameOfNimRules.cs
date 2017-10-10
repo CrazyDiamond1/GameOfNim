@@ -1,4 +1,5 @@
 ﻿using GameOfNim.GameProcesses;
+using GameOfNim.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,12 +18,20 @@ namespace GameOfNim.GameProcesses
         /// <param name="heapNumber">An int representing which heap the object(s) is/are being removed from</param>
         /// <param name="objectsToBeRemoved">The amount of objects being removed from the chosen heap</param>
         /// <returns></returns>
-        public static bool IsMoveLegal(int heapNumber, int objectsToBeRemoved)
+        public static bool IsMoveLegal(int heapNumber, int objectsToBeRemoved, Board board)
         {
-            //if (NimGame.CheckHeaps() > 0)
-            //{
-            //    return true;
-            //}
+            if(objectsToBeRemoved == 0)
+            {
+                return false;
+            }
+            if(board.heaps[heapNumber] < objectsToBeRemoved)
+            {
+                return false;
+            }
+            if(board.heaps[heapNumber] <= 0)
+            {
+                return false;
+            }
             return true;
         }
 

@@ -26,10 +26,12 @@ namespace GameOfNim
         TextBox removeBoxOne = new TextBox();
         TextBox removeBoxTwo = new TextBox();
         TextBox removeBoxThree = new TextBox();
+        //The grids containing the labels that correspond to heap objects
         Grid heapOne = new Grid();
         Grid heapTwo = new Grid();
         Grid heapThree = new Grid();
         Grid heapZero = new Grid();
+        //The current instance of the game
         private NimGame currentGame;
         public GameWindow(int difficulty, bool isPVP)
         {
@@ -127,8 +129,12 @@ namespace GameOfNim
                     Grid.SetColumn(stack, i);
                 }                
             }
+            //Make the game board and populate the heaps with objects
+            //based on which difficulty was picked.
             for (int i = 0; i < GameBoard.ColumnDefinitions.Count; i++)
             {
+                //A temporary grid that contains heap objects the be transferred
+                //over to specific heaps.
                 Grid tempGrid = new Grid();
                 for (int j = 0; j < 10; j++)
                 {
@@ -136,6 +142,7 @@ namespace GameOfNim
                 }
                 for (int j = 0; j < currentGame.gameBoard.heaps[i]; j++)
                 {
+                    //The creation of an object
                     Label tempLabel = new Label();
                     tempLabel.Background = Brushes.Firebrick;
                     tempLabel.BorderThickness = new Thickness(2);
@@ -177,7 +184,7 @@ namespace GameOfNim
         {
             int objectAmountRemoved;
             int.TryParse(removeBoxZero.Text, out objectAmountRemoved);
-            if(GameOfNimRules.IsMoveLegal(0, objectAmountRemoved))
+            if(GameOfNimRules.IsMoveLegal(0, objectAmountRemoved, currentGame.gameBoard))
             {
                 currentGame.gameBoard.heaps[0] -= objectAmountRemoved;
                 currentGame.PlayerTurn();
@@ -198,7 +205,7 @@ namespace GameOfNim
         {
             int objectAmountRemoved;
             int.TryParse(removeBoxOne.Text, out objectAmountRemoved);
-            if (GameOfNimRules.IsMoveLegal(1, objectAmountRemoved))
+            if (GameOfNimRules.IsMoveLegal(1, objectAmountRemoved, currentGame.gameBoard))
             {
                 currentGame.gameBoard.heaps[1] -= objectAmountRemoved;
                 currentGame.PlayerTurn();
@@ -219,7 +226,7 @@ namespace GameOfNim
         {
             int objectAmountRemoved;
             int.TryParse(removeBoxTwo.Text, out objectAmountRemoved);
-            if (GameOfNimRules.IsMoveLegal(2, objectAmountRemoved))
+            if (GameOfNimRules.IsMoveLegal(2, objectAmountRemoved, currentGame.gameBoard))
             {
                 currentGame.gameBoard.heaps[2] -= objectAmountRemoved;
                 currentGame.PlayerTurn();
@@ -240,7 +247,7 @@ namespace GameOfNim
         {
             int objectAmountRemoved;
             int.TryParse(removeBoxThree.Text, out objectAmountRemoved);
-            if (GameOfNimRules.IsMoveLegal(3, objectAmountRemoved))
+            if (GameOfNimRules.IsMoveLegal(3, objectAmountRemoved, currentGame.gameBoard))
             {
                 currentGame.gameBoard.heaps[3] -= objectAmountRemoved;
                 currentGame.PlayerTurn();
@@ -274,8 +281,13 @@ namespace GameOfNim
             this.Close();
         }
 
+        /// <summary>
+        /// Repopulate the board after a turn is made to present an
+        /// updated GUI
+        /// </summary>
         private void RepopulateBoard()
         {
+            //Checks if anyone has lost yet
             if (GameOfNimRules.PlayerLoses(currentGame.CheckObjectTotal()))
             { 
                 if((currentGame.turnCounter-1)%2 == 0)
@@ -293,10 +305,13 @@ namespace GameOfNim
                     MessageBox.Show($"{currentGame.player2.Name} loses! {currentGame.player1.Name} wins!");                   
                 }
             }
+            //Clear all heaps in preparation for repopulation
             heapZero.Children.Clear();
             heapOne.Children.Clear();
             heapTwo.Children.Clear();
             heapThree.Children.Clear();
+            //Follows the same logic as before for repopulating individual heaps
+            //based on objects contained in the board class
             for (int i = 0; i < GameBoard.ColumnDefinitions.Count; i++)
             {
                 Grid tempGrid = new Grid();
@@ -338,6 +353,11 @@ namespace GameOfNim
                 }
             }
         }
+
+        /// <summary>
+        /// Displays the name of the user whose current
+        /// turn it is
+        /// </summary>
         private void DisplayName()
         {
             if (currentGame.turnCounter % 2 == 0)

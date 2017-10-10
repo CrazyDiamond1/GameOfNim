@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GameOfNim.Models
 {
-    class Board
+    public class Board
     {
         public int[] heaps;
         public int numOfHeaps;
