@@ -26,11 +26,16 @@ namespace GameOfNim
         TextBox removeBoxOne = new TextBox();
         TextBox removeBoxTwo = new TextBox();
         TextBox removeBoxThree = new TextBox();
+        Grid heapOne = new Grid();
+        Grid heapTwo = new Grid();
+        Grid heapThree = new Grid();
+        Grid heapZero = new Grid();
         private NimGame currentGame;
         public GameWindow(int difficulty, bool isPVP)
         {
             currentGame = new NimGame(difficulty, isPVP);
             InitializeComponent();
+            DisplayName();
             //This if statement holds all difficulty cases
             if(difficulty == 1)
             {
@@ -137,8 +142,30 @@ namespace GameOfNim
                     tempGrid.Children.Add(tempLabel);
                     Grid.SetRow(tempLabel, 9 - j);
                 }
-                GameBoard.Children.Add(tempGrid);
-                Grid.SetColumn(tempGrid, i);
+                if (i == 0)
+                {
+                    heapZero = tempGrid;
+                    GameBoard.Children.Add(tempGrid);
+                    Grid.SetColumn(heapZero, i);
+                }
+                else if (i == 1)
+                {
+                    heapOne = tempGrid;
+                    GameBoard.Children.Add(tempGrid);
+                    Grid.SetColumn(heapOne, i);
+                }
+                else if (i == 2)
+                {
+                    heapTwo = tempGrid;
+                    GameBoard.Children.Add(tempGrid);
+                    Grid.SetColumn(heapTwo, i);
+                }
+                else
+                {
+                    heapThree = tempGrid;
+                    GameBoard.Children.Add(tempGrid);
+                    Grid.SetColumn(heapThree, i);
+                }
             }
         }
         /// <summary>
@@ -154,6 +181,8 @@ namespace GameOfNim
             {
                 currentGame.gameBoard.heaps[0] -= objectAmountRemoved;
                 currentGame.PlayerTurn();
+                RepopulateBoard();
+                DisplayName();
             }
             else
             {
@@ -173,6 +202,8 @@ namespace GameOfNim
             {
                 currentGame.gameBoard.heaps[1] -= objectAmountRemoved;
                 currentGame.PlayerTurn();
+                RepopulateBoard();
+                DisplayName();
             }
             else
             {
@@ -192,6 +223,8 @@ namespace GameOfNim
             {
                 currentGame.gameBoard.heaps[2] -= objectAmountRemoved;
                 currentGame.PlayerTurn();
+                RepopulateBoard();
+                DisplayName();
             }
             else
             {
@@ -211,6 +244,8 @@ namespace GameOfNim
             {
                 currentGame.gameBoard.heaps[3] -= objectAmountRemoved;
                 currentGame.PlayerTurn();
+                RepopulateBoard();
+                DisplayName();
             }
             else
             {
@@ -237,6 +272,82 @@ namespace GameOfNim
         private void Exit_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void RepopulateBoard()
+        {
+            if (GameOfNimRules.PlayerLoses(currentGame.CheckObjectTotal()))
+            { 
+                if((currentGame.turnCounter-1)%2 == 0)
+                {
+                    MainWindow mw = new MainWindow();
+                    mw.Show();
+                    this.Close();
+                    MessageBox.Show($"{currentGame.player1.Name} loses! {currentGame.player2.Name} wins!");
+                }
+                else
+                {
+                    MainWindow mw = new MainWindow();
+                    mw.Show();
+                    this.Close();
+                    MessageBox.Show($"{currentGame.player2.Name} loses! {currentGame.player1.Name} wins!");                   
+                }
+            }
+            heapZero.Children.Clear();
+            heapOne.Children.Clear();
+            heapTwo.Children.Clear();
+            heapThree.Children.Clear();
+            for (int i = 0; i < GameBoard.ColumnDefinitions.Count; i++)
+            {
+                Grid tempGrid = new Grid();
+                for (int j = 0; j < 10; j++)
+                {
+                    tempGrid.RowDefinitions.Add(new RowDefinition());
+                }
+                for (int j = 0; j < currentGame.gameBoard.heaps[i]; j++)
+                {
+                    Label tempLabel = new Label();
+                    tempLabel.Background = Brushes.Firebrick;
+                    tempLabel.BorderThickness = new Thickness(2);
+                    tempGrid.Children.Add(tempLabel);
+                    Grid.SetRow(tempLabel, 9 - j);
+                }
+                if (i == 0)
+                {
+                    heapZero = tempGrid;
+                    GameBoard.Children.Add(tempGrid);
+                    Grid.SetColumn(heapZero, i);
+                }
+                else if (i == 1)
+                {
+                    heapOne = tempGrid;
+                    GameBoard.Children.Add(tempGrid);
+                    Grid.SetColumn(heapOne, i);
+                }
+                else if (i == 2)
+                {
+                    heapTwo = tempGrid;
+                    GameBoard.Children.Add(tempGrid);
+                    Grid.SetColumn(heapTwo, i);
+                }
+                else
+                {
+                    heapThree = tempGrid;
+                    GameBoard.Children.Add(tempGrid);
+                    Grid.SetColumn(heapThree, i);
+                }
+            }
+        }
+        private void DisplayName()
+        {
+            if (currentGame.turnCounter % 2 == 0)
+            {
+                TurnLabel.Content = $"{currentGame.player1.Name}'s turn!";
+            }
+            else
+            {
+                TurnLabel.Content = $"{currentGame.player2.Name}'s turn!";
+            }
         }
     }
 }

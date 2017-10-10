@@ -9,7 +9,7 @@ namespace GameOfNim.GameProcesses
 {
     public static class GameOfNimRules
     {
-        static NimGame nim = new NimGame(1, true);
+        //static NimGame nim = new NimGame(1, true);
 
         /// <summary>
         /// When this method is called, it will validate the player's move
@@ -23,7 +23,7 @@ namespace GameOfNim.GameProcesses
             //{
             //    return true;
             //}
-            return false;
+            return true;
         }
 
         /// <summary>

@@ -12,7 +12,7 @@ namespace GameOfNim.GameProcesses
         public Player player1;
         public Player player2;
         public Board gameBoard;
-        int turnCounter = 0;
+        public int turnCounter = 0;
         int difficulty;
         bool isPVP;
         Random randold = new Random();
@@ -22,17 +22,18 @@ namespace GameOfNim.GameProcesses
 
             if (!isPVP)
             {
-                isPVP = false;
+                this.isPVP = false;
                 player1 = new Player(true);
                 player1.InitializePlayer();
                 player2 = new Player(false);
+                player2.InitializePlayer();
             }
             else if (isPVP)
             {
-                isPVP = true;
+                this.isPVP = true;
                 player1 = new Player(true);
                 player1.InitializePlayer();
-                player2 = new Player(false);
+                player2 = new Player(true);
                 player2.InitializePlayer();
             }
         }
@@ -42,7 +43,10 @@ namespace GameOfNim.GameProcesses
         public void PlayerTurn()
         {
             turnCounter =+ 1;
-            CompPlayerMove();
+            if(!isPVP)
+            {
+                CompPlayerMove();
+            }
         }
         public void CompPlayerMove()
         {
@@ -55,7 +59,12 @@ namespace GameOfNim.GameProcesses
         }
         public int CheckObjectTotal()
         {
-            return 1;
+            int totalObjects = 0;
+            foreach(int i in gameBoard.heaps)
+            {
+                totalObjects += i;
+            }
+            return totalObjects;
         }
         public int CheckHeap()
         {

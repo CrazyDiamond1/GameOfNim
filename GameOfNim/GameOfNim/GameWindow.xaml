@@ -31,7 +31,8 @@
                    HorizontalAlignment="Center"
                    FontFamily="Courier New"
                    FontSize="16"
-                   FontWeight="Bold"/>
+                   FontWeight="Bold"
+                   x:Name="TurnLabel"/>
             <Grid x:Name="GameBoard" Height="400" Width="350">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="6*"/>
